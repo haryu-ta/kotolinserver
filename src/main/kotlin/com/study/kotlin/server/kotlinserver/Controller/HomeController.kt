@@ -12,7 +12,7 @@ class HomeController(private val service : HorseService){
     @GetMapping("/home")
     fun index(model : Model) : String {
 
-        model.addAttribute("message",service.selectHorse())
+        model.addAttribute("message",service.selectHorse().get(1).name)
         //model.addAttribute("message","messge")
         return "home/index"
     }
