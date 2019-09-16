@@ -6,6 +6,6 @@
     <link th:href="@{/css/app.css}" rel="stylesheet" />
 </head>
 <body>
-<h1 th:text="${message}"></h1>
+<h1 th:each="horse:${Horses}" th:text="${horse.name}"></h1>
 </body>
 </html>

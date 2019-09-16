@@ -6,4 +6,6 @@ interface HorseService {
 
     fun selectHorse() :List<HorseDTO>
 
+    fun selectFather() : List<HorseDTO>
+
 }

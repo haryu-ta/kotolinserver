@@ -11,4 +11,6 @@ interface HorseMapper {
 
     fun findOne() : List<HorseModel>
 
+    fun findByFather(father : String): List<HorseModel>
+
 }

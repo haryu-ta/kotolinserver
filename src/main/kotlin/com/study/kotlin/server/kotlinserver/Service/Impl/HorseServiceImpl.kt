@@ -17,6 +17,24 @@ class HorseServiceImpl(private val hmapper : HorseMapper):HorseService{
 
     }
 
+    override fun selectFather(): List<HorseDTO> {
+        val horse : List<HorseModel > = hmapper.findByFather("Sunday Silence");
+        val dto : List<HorseDTO> = horse.map { _toHorseDTO(it) }
+        return dto
+    }
+
+    private fun _toHorseDTO2(model: HorseModel) : HorseDTO {
+        return HorseDTO(
+                name = model.father,
+                gender = model.gender,
+                old = model.old,
+                father = model.name
+        )
+    }
+
+    /**
+     * EntityからDTOにデータ詰替
+     */
     private fun _toHorseDTO(model: HorseModel) : HorseDTO {
         return HorseDTO(
                     name = model.name,
