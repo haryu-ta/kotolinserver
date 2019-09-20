@@ -23,15 +23,6 @@ class HorseServiceImpl(private val hmapper : HorseMapper):HorseService{
         return dto
     }
 
-    private fun _toHorseDTO2(model: HorseModel) : HorseDTO {
-        return HorseDTO(
-                name = model.father,
-                gender = model.gender,
-                old = model.old,
-                father = model.name
-        )
-    }
-
     /**
      * EntityからDTOにデータ詰替
      */

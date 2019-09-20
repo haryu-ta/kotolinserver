@@ -1,3 +1,20 @@
 body {
     background-color: red;
 }
+
+
+a.botton1{
+font-size:20px;
+display:block;
+width:100px;
+padding-top:10px;
+padding-bottom:10px;
+text-align:center;
+border:2px solid;
+border-color:#aaaaaa #444444 #444444 #aaaaaa;
+background:#cccccc;
+}
+
+a.botton1:hover{
+background:#777777;
+}
