@@ -1,4 +1,4 @@
-body {
+body.red-back {
     background-color: red;
 }
 
@@ -17,4 +17,15 @@ background:#cccccc;
 
 a.botton1:hover{
 background:#777777;
+}
+
+span.field-val-error{
+    color : red;
+}
+
+p.screen-error{
+    coler:black;
+    font-size:16px;
+    height:50px;
+    background-color:pink;
 }

@@ -8,10 +8,14 @@ import com.study.kotlin.server.kotlinserver.form.SecondForm
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
+import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @Controller
 class SecondController(private val service : HorseService){
@@ -23,8 +27,7 @@ class SecondController(private val service : HorseService){
     fun showForm(secondForm: SecondForm ,model : Model):String{
         initParam(secondForm)
         // 都道府県リスト設定
-        model.addAttribute("prefList", setPrefList())
-        model.addAttribute("contentMap", DisplayConstants.setContentMap(service.selectHorse()))
+        setScreeen(model)
         return "home/second"
     }
 
@@ -32,9 +35,19 @@ class SecondController(private val service : HorseService){
      * 登録処理
      */
     @PostMapping("/regist")
-    fun regist(@ModelAttribute secondForm : SecondForm, result: BindingResult,model : Model):String{
+    fun regist(@ModelAttribute @Validated secondForm : SecondForm, result: BindingResult, model : Model):String{
+
+        if(result.hasErrors()){
+            model.addAttribute("validateError","入力えらー")
+            return showForm(secondForm,model)
+        }
         println(secondForm.toString())
         return "redirect:/second"
+    }
+
+    private fun setScreeen(model: Model) {
+        model.addAttribute("prefList", setPrefList())
+        model.addAttribute("contentMap", DisplayConstants.setContentMap(service.selectHorse()))
     }
 
     /**
@@ -44,7 +57,7 @@ class SecondController(private val service : HorseService){
         initForm.name = "板村亮平"
         initForm.sex="男"
         initForm.prefuct="愛知"
-        initForm.birth = LocalDate.now()
+        initForm.birth = LocalDate.parse("1982-09-17")
         initForm.email = "itamura@mail.com"
     }
 

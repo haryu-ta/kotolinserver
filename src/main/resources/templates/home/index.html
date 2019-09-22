@@ -5,7 +5,7 @@
     <title>INDEX</title>
     <link th:href="@{/css/app.css}" rel="stylesheet" />
 </head>
-<body>
+<body class="red-back">
 <h1 th:each="horse:${Horses}" th:text="${horse.name}"></h1>
 <hr>
 <a th:href="@{/second}" class="botton1" >次画面</a>

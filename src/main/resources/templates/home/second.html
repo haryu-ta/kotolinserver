@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8" />
     <title>SECOND</title>
+    <link th:href="@{/css/app.css}" rel="stylesheet" />
 </head>
 <body>
     <form th:action="@{/regist}" th:method="POST" th:object="${secondForm}" >
+        <!-- 共通エラーメッセージ -->
+        <div th:if="${#fields.hasErrors('all')}">
+            <p th:text="${validateError}" class="screen-error">ErrorMessage</p>
+        </div>
         <div>
             <label for="name">氏名：</label>
             <input type="text" value="板村 亮平" id="name" th:field="*{name}" />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="field-val-error">error!</span>
         </div>
         <div>
             <label for="prefucture">出身地：</label>
@@ -16,6 +22,7 @@
             <select id="prefucture" name="prefuct">
                 <option th:each="pref:${prefList}" th:value="${pref}" th:text="${pref}" th:selected="${pref} == *{prefuct}">出身地</option>
             </select>
+            <span th:if="${#fields.hasErrors('prefuct')}" th:errors="*{prefuct}" class="field-val-error">error!</span>
         </div>
         <div>
             <label>性別:
@@ -25,7 +32,8 @@
         </div>
         <div>
             <label for="birthday">生年月日：</label>
-            <input type="text" name="birthday" id="birthday" value="1982/09/17" th:field="*{birth}" />
+            <input type="text" name="birthday" id="birthday" th:field="*{birth}" />
+<!--            th:text="*{#temporals.format(birth,'yyyy-MM-dd')}" />-->
         </div>
         <div>
             <label for="age">年齢：</label>
