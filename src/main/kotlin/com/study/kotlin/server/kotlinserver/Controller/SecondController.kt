@@ -12,16 +12,13 @@ import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
+
 
 @Controller
 class SecondController(private val service : HorseService){
 
     /**
-     * 初期表示s
+     * 初期表示
      */
     @GetMapping("/second")
     fun showForm(secondForm: SecondForm ,model : Model):String{
@@ -57,7 +54,7 @@ class SecondController(private val service : HorseService){
         initForm.name = "板村亮平"
         initForm.sex="男"
         initForm.prefuct="愛知"
-        initForm.birth = LocalDate.parse("1982-09-17")
+        initForm.tyear = 2019
         initForm.email = "itamura@mail.com"
     }
 

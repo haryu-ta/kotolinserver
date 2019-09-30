@@ -31,8 +31,14 @@
             </label>
         </div>
         <div>
-            <label for="birthday">生年月日：</label>
-            <input type="text" name="birthday" id="birthday" th:field="*{birth}" />
+            <label for="birthdayy">生年月日：</label>
+            <!-- <input type="text" name="birthday" id="birthday" th:field="*{birth}" /> -->
+            <input type="text" name="birthday" id="birthdayy" th:field="*{tyear}" style="width:80px;"/>年
+            <input type="text" name="birthday" id="birthdaym" th:field="*{tmonth}" style="width:40px;"/>月
+            <input type="text" name="birthday" id="birthdayd" th:field="*{tday}" style="width:40px;"/>日
+            <span th:if="${#fields.hasErrors('tyear')}" th:errors="*{tyear}" class="field-val-error">error!</span>
+            <span th:if="${#fields.hasErrors('tmonth')}" th:errors="*{tmonth}" class="field-val-error">error!</span>
+            <span th:if="${#fields.hasErrors('tday')}" th:errors="*{tday}" class="field-val-error">error!</span>
 <!--            th:text="*{#temporals.format(birth,'yyyy-MM-dd')}" />-->
         </div>
         <div>
@@ -42,6 +48,7 @@
         <div>
             <label for="email">EMail:</label>
             <input type="text" name="email" id="email" th:field="*{email}" />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="field-val-error">error!</span>
         </div>
 <!--        <div>-->
 <!--            <label for="pw">パスワード：</label>-->
