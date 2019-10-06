@@ -44,7 +44,7 @@ class SecondController(private val service : HorseService){
 
     private fun setScreeen(model: Model) {
         model.addAttribute("prefList", setPrefList())
-        model.addAttribute("contentMap", DisplayConstants.setContentMap(service.selectHorse()))
+//        model.addAttribute("contentMap", DisplayConstants.setContentMap(service.selectHorse()))
     }
 
     /**

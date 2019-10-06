@@ -36,9 +36,11 @@
             <input type="text" name="birthday" id="birthdayy" th:field="*{tyear}" style="width:80px;"/>年
             <input type="text" name="birthday" id="birthdaym" th:field="*{tmonth}" style="width:40px;"/>月
             <input type="text" name="birthday" id="birthdayd" th:field="*{tday}" style="width:40px;"/>日
-            <span th:if="${#fields.hasErrors('tyear')}" th:errors="*{tyear}" class="field-val-error">error!</span>
-            <span th:if="${#fields.hasErrors('tmonth')}" th:errors="*{tmonth}" class="field-val-error">error!</span>
-            <span th:if="${#fields.hasErrors('tday')}" th:errors="*{tday}" class="field-val-error">error!</span>
+            <div th:if="${#fields.hasErrors('tyear') || #fields.hasErrors('tmonth') || #fields.hasErrors('tday') }">
+                <p th:if="${#fields.hasErrors('tyear')}" th:errors="*{tyear}" class="field-val-error field-birth-error"></p>
+                <p th:if="${#fields.hasErrors('tmonth')}" th:errors="*{tmonth}" class="field-val-error field-birth-error"></p>
+                <p th:if="${#fields.hasErrors('tday')}" th:errors="*{tday}" class="field-val-error field-birth-error"></p>
+            </div>
 <!--            th:text="*{#temporals.format(birth,'yyyy-MM-dd')}" />-->
         </div>
         <div>

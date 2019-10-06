@@ -1,12 +1,13 @@
 package com.study.kotlin.server.kotlinserver.form
 
+import com.study.kotlin.server.kotlinserver.Annotation.DayValidityCheck
 import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import javax.validation.constraints.*
 
-
+@DayValidityCheck(propertyDay = "tday",propertyMonth = "tmonth")
 data class SecondForm @JvmOverloads constructor(
 
         @field:NotBlank(message="必須入力項目")
@@ -21,10 +22,17 @@ data class SecondForm @JvmOverloads constructor(
 //        @field:NotNull(message="{validate.error.birth}")
 //        var birth : LocalDate?,
 
+        @field:NotNull(message = "{validate.error.birth}")
         @field:Max(value = 2100,message = "{validate.error.birth}")
         @field:Min(value = 1901,message = "{validate.error.birth}")
         var tyear : Long?,
+
+        @field:NotNull(message = "{validate.error.birth}")
+        @field:Max(value = 12,message = "{validate.error.birth}")
+        @field:Min(value = 1,message = "{validate.error.birth}")
         var tmonth : Long?,
+
+        @field:NotNull(message = "{validate.error.birth}")
         var tday : Long?,
 
         var age : Int = 0,

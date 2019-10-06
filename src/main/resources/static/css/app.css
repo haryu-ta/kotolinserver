@@ -19,8 +19,13 @@ a.botton1:hover{
 background:#777777;
 }
 
-span.field-val-error{
+.field-val-error{
     color : red;
+}
+
+.field-birth-error{
+    padding-top:0px;
+    margin:0px;
 }
 
 p.screen-error{
